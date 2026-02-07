@@ -43,3 +43,24 @@ document.addEventListener('DOMContentLoaded', () => {
     displayProducts();
     updateCart();
 });
+function sendOrderToWhatsApp() {
+    if (cart.length === 0) return alert("Seu carrinho está vazio!");
+
+    let message = "*NOVO PEDIDO - LOJA PIED*%0A%0A";
+    let total = 0;
+
+    cart.forEach(item => {
+        const subtotal = item.price * item.quantity;
+        message += `• ${item.quantity}x *${item.name}* - R$ ${subtotal.toFixed(2)}%0A`;
+        total += subtotal;
+    });
+
+    message += `%0A*VALOR TOTAL: R$ ${total.toFixed(2)}*%0A%0A`;
+    message += "_Por favor, informe seu endereço para cálculo de frete._";
+
+    const phoneNumber = "5579996300185"; // Substituir pelo número da Pied
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+
+    window.open(whatsappUrl, '_blank');
+}
+
