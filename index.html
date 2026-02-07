@@ -1,27 +1,19 @@
-<link rel="stylesheet" href="style.css">.[3, 1]
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja Pied | Exclusividade em Cada Detalhe</title>
+    <title>PIED | Authentic Streetwear</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="header" id="header">
+    <header class="header">
         <nav class="nav container">
-            <a href="#" class="nav__logo">PIED</a>
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="#home" class="nav__link">Início</a></li>
-                    <li class="nav__item"><a href="#produtos" class="nav__link">Produtos</a></li>
-                    <li class="nav__item"><a href="#contato" class="nav__link">Contato</a></li>
-                </ul>
-            </div>
-            <div class="nav__btns">
-                <i class="ri-search-line" id="search-btn"></i>
-                <div class="nav__shop" id="cart-btn">
+            <a href="#" class="logo">PIED</a>
+            <div class="nav__icons">
+                <i class="ri-search-line"></i>
+                <div class="cart-icon" onclick="toggleCart()">
                     <i class="ri-shopping-cart-2-line"></i>
                     <span id="cart-count">0</span>
                 </div>
@@ -29,35 +21,41 @@
         </nav>
     </header>
 
-    <main class="main">
-        <section class="home" id="home">
-            <div class="home__container container grid">
-                <div class="home__data">
-                    <h1 class="home__title">Nova Coleção <br> Pied Black & Red</h1>
-                    <p class="home__description">Descubra a fusão perfeita entre o luxo e o urbano.</p>
-                    <a href="#produtos" class="button">Ver Catálogo</a>
-                </div>
-                <div class="home__img-wrapper">
-                    <img src="https://placehold.co/600x600/000000/FF0000?text=Pied+Destaque" alt="Destaque Pied">
-                </div>
-            </div>
+    <main class="container">
+        <section class="hero">
+            <h1>PIED RED & BLACK</h1>
+            <p>O luxo urbano de Aracaju em cada passo.</p>
+            <a href="#produtos" class="btn-primary">Explorar Coleção</a>
         </section>
 
-        <section class="products section container" id="produtos">
-            <h2 class="section__title">Nossos Produtos</h2>
-            <div class="products__container grid" id="product-list">
+        <section id="produtos" class="products-section">
+            <h2 class="section-title">Lançamentos</h2>
+            <div class="products-grid" id="product-list">
                 </div>
         </section>
     </main>
 
-    <div class="mobile-nav">
-        <a href="#home"><i class="ri-home-4-line"></i></a>
-        <a href="#produtos"><i class="ri-function-line"></i></a>
-        <a href="#cart" id="mobile-cart-btn"><i class="ri-shopping-bag-line"></i></a>
-        <a href="#contato"><i class="ri-customer-service-2-line"></i></a>
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Seu Carrinho</h3>
+                <i class="ri-close-line" onclick="toggleCart()"></i>
+            </div>
+            <div id="cart-items" class="cart-items"></div>
+            <div class="cart-footer">
+                <div class="total">Total: <span id="cart-total">R$ 0,00</span></div>
+                <button class="btn-checkout" onclick="checkoutWhatsApp()">Finalizar no WhatsApp</button>
+            </div>
+        </div>
     </div>
 
-    <script src="assets/js/main.js"></script>
+    <div class="mobile-bar">
+        <a href="#"><i class="ri-home-line"></i><span>Início</span></a>
+        <a href="#produtos"><i class="ri-function-line"></i><span>Loja</span></a>
+        <a href="javascript:void(0)" onclick="toggleCart()"><i class="ri-shopping-bag-line"></i><span>Carrinho</span></a>
+        <a href="#"><i class="ri-user-line"></i><span>Conta</span></a>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
