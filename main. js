@@ -1,0 +1,45 @@
+// Dados simulados dos produtos da Pied
+const products =;
+
+let cart = JSON.parse(localStorage.getItem('pied_cart')) ||;
+
+// Renderizar Produtos na Vitrine
+function displayProducts() {
+    const productList = document.getElementById('product-list');
+    productList.innerHTML = products.map(product => `
+        <article class="product__card">
+            <img src="${product.img}" alt="${product.name}" class="product__img">
+            <h3 class="product__title">${product.name}</h3>
+            <span class="product__price">R$ ${product.price.toFixed(2)}</span>
+            <br><br>
+            <button class="button" onclick="addToCart(${product.id})">Comprar</button>
+        </article>
+    `).join('');
+}
+
+// Lógica do Carrinho
+function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    const cartItem = cart.find(item => item.id === productId);
+
+    if (cartItem) {
+        cartItem.quantity += 1;
+    } else {
+        cart.push({...product, quantity: 1 });
+    }
+
+    updateCart();
+}
+
+function updateCart() {
+    localStorage.setItem('pied_cart', JSON.stringify(cart));
+    const count = cart.reduce((total, item) => total + item.quantity, 0);
+    document.getElementById('cart-count').textContent = count;
+    console.log('Carrinho atualizado:', cart);
+}
+
+// Inicialização
+document.addEventListener('DOMContentLoaded', () => {
+    displayProducts();
+    updateCart();
+});
