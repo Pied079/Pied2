@@ -1,2 +1,63 @@
-<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>PIED Header</title>\n    <style>\n        body {\n            margin: 0;\n            padding: 0;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            background-color: #f0f0f0;\n        }\n        .header {\n            font-family: Arial, sans-serif;\n            font-size: 48px;\n            color: #000;\n            text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);\n        }\n        .red {\n            color: red;\n            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);\n        }\n    </style>\n</head>\n<body>\n    <div class="header">PIE<span class="red">D</span></div>\n</body>\n</html>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja Pied | Exclusividade em Cada Detalhe</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">PIED</a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link">Início</a></li>
+                    <li class="nav__item"><a href="#produtos" class="nav__link">Produtos</a></li>
+                    <li class="nav__item"><a href="#contato" class="nav__link">Contato</a></li>
+                </ul>
+            </div>
+            <div class="nav__btns">
+                <i class="ri-search-line" id="search-btn"></i>
+                <div class="nav__shop" id="cart-btn">
+                    <i class="ri-shopping-cart-2-line"></i>
+                    <span id="cart-count">0</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="home" id="home">
+            <div class="home__container container grid">
+                <div class="home__data">
+                    <h1 class="home__title">Nova Coleção <br> Pied Black & Red</h1>
+                    <p class="home__description">Descubra a fusão perfeita entre o luxo e o urbano.</p>
+                    <a href="#produtos" class="button">Ver Catálogo</a>
+                </div>
+                <div class="home__img-wrapper">
+                    <img src="https://placehold.co/600x600/000000/FF0000?text=Pied+Destaque" alt="Destaque Pied">
+                </div>
+            </div>
+        </section>
+
+        <section class="products section container" id="produtos">
+            <h2 class="section__title">Nossos Produtos</h2>
+            <div class="products__container grid" id="product-list">
+                </div>
+        </section>
+    </main>
+
+    <div class="mobile-nav">
+        <a href="#home"><i class="ri-home-4-line"></i></a>
+        <a href="#produtos"><i class="ri-function-line"></i></a>
+        <a href="#cart" id="mobile-cart-btn"><i class="ri-shopping-bag-line"></i></a>
+        <a href="#contato"><i class="ri-customer-service-2-line"></i></a>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
 
