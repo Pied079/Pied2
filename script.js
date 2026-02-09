@@ -2,7 +2,7 @@
 // CONFIGURAÇÕES GERAIS
 // ============================================
 
-const PHONE_NUMBER = "5579999999999"; // Altere para seu WhatsApp
+const PHONE_NUMBER = "5579996300185"; // Altere para seu WhatsApp
 
 // Banco de dados dos produtos
 const products = [
