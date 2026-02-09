@@ -388,27 +388,36 @@ function checkoutWhatsApp() {
         return;
     }
 
-    let message = "*🛍️ NOVO PEDIDO - PIED STORE 🛍️*%0A%0A";
-    message += "*PRODUTOS:%0A*";
+    // Solicita dados básicos para agilizar o atendimento
+    const clienteNome = prompt("Por favor, digite seu nome para identificarmos o pedido:");
+    
+    if (!clienteNome) return; // Cancela se não digitar o nome
+
+    let message = `*🏛️ PEDIDO PIED STREETWEAR*%0A`;
+    message += `*Cliente:* ${clienteNome}%0A`;
+    message += `*Data:* ${new Date().toLocaleDateString()}%0A%0A`;
+    message += `*🛒 ITENS DO PEDIDO:*%0A`;
+    message += `--------------------------------%0A`;
 
     cart.forEach(item => {
         const qty = item.quantity || 1;
-        message += `• ${item.name}%0A`;
-        message += `  Quantidade: ${qty} x R$ ${item.price.toFixed(2)}%0A`;
-        message += `  Subtotal: R$ ${(item.price * qty).toFixed(2)}%0A%0A`;
+        const subtotalItem = item.price * qty;
+        message += `▪️ *${qty}x* ${item.name}%0A`;
+        message += `   (R$ ${item.price.toFixed(2)}) = R$ ${subtotalItem.toFixed(2)}%0A`;
     });
 
     const subtotal = getCartSubtotal();
     const shipping = getShippingCost();
     const total = subtotal + shipping;
 
-    message += "%0A*RESUMO:%0A*";
-    message += `Subtotal: R$ ${subtotal.toFixed(2)}%0A`;
+    message += `--------------------------------%0A`;
+    message += `*Subtotal:* R$ ${subtotal.toFixed(2)}%0A`;
     message += shipping === 0 
-        ? `Frete: GRÁTIS%0A` 
-        : `Frete: R$ ${shipping.toFixed(2)}%0A`;
-    message += `*TOTAL: R$ ${total.toFixed(2)}*%0A%0A`;
-    message += "Aguardamos sua confirmação!";
+        ? `*Frete:* GRÁTIS%0A` 
+        : `*Frete:* R$ ${shipping.toFixed(2)}%0A`;
+    message += `*TOTAL A PAGAR: R$ ${total.toFixed(2)}*%0A`;
+    message += `--------------------------------%0A%0A`;
+    message += `Gostaria de combinar a entrega e o pagamento (Pix/Cartão).`;
 
     window.open(`https://wa.me/${PHONE_NUMBER}?text=${message}`, '_blank');
 
@@ -418,7 +427,7 @@ function checkoutWhatsApp() {
     renderCart();
     updateCartUI();
     closeCart();
-    showNotification('Pedido enviado! Aguarde a confirmação no WhatsApp.');
+    showNotification('Pedido gerado! Redirecionando para o WhatsApp...');
 }
 
 // ============================================
