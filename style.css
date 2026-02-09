@@ -98,3 +98,36 @@ body {
    .hero h1 { font-size: 2rem; }
    .cart-content { width: 100%; }
 }
+
+/* Footer Styles */
+.footer {
+    background-color: #050505;
+    border-top: 1px solid #222;
+    padding: 60px 0 20px;
+    margin-top: 50px;
+}
+
+.footer__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer__brand p { color: #666; font-size: 0.9rem; margin-top: 10px; }
+.footer__links h3, .footer__social h3 { color: var(--white); font-size: 1.1rem; margin-bottom: 20px; }
+.footer__links ul { list-style: none; }
+.footer__links li { margin-bottom: 10px; }
+.footer__links a { color: #888; text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
+.footer__links a:hover { color: var(--red); }
+.social-icons { display: flex; gap: 15px; font-size: 1.5rem; }
+.social-icons a { color: var(--white); transition: 0.3s; }
+.social-icons a:hover { color: var(--red); }
+
+.footer__bottom {
+    border-top: 1px solid #222;
+    padding-top: 20px;
+    text-align: center;
+    color: #444;
+    font-size: 0.8rem;
+}
