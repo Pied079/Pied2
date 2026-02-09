@@ -3,57 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PIED - Authentic Streetwear. O luxo urbano em cada passo.">
     <title>PIED | Authentic Streetwear</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- HEADER & NAVIGATION -->
     <header class="header">
         <nav class="nav container">
-            <a href="#" class="logo">PIED</a>
+            <a href="#home" class="logo" aria-label="Voltar para início">PIED</a>
+            
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#produtos">Loja</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+
             <div class="nav__icons">
-                <i class="ri-search-line"></i>
-                <div class="cart-icon" onclick="toggleCart()">
+                <button class="search-btn" aria-label="Buscar produtos" onclick="toggleSearch()">
+                    <i class="ri-search-line"></i>
+                </button>
+                <button class="cart-icon" aria-label="Abrir carrinho" onclick="toggleCart()">
                     <i class="ri-shopping-cart-2-line"></i>
-                    <span id="cart-count">0</span>
-                </div>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </button>
+                <button class="menu-toggle" aria-label="Menu" onclick="toggleMenu()">
+                    <i class="ri-menu-line"></i>
+                </button>
             </div>
         </nav>
     </header>
 
-    <main class="container">
-        <section class="hero">
-            <h1>PIED RED & BLACK</h1>
-            <p>O luxo urbano de Aracaju em cada passo.</p>
-            <a href="#produtos" class="btn-primary">Explorar Coleção</a>
+    <!-- SEARCH BAR (Hidden by default) -->
+    <div id="search-bar" class="search-bar">
+        <input type="text" placeholder="Buscar produtos..." class="search-input" id="search-input">
+        <button class="search-close" onclick="toggleSearch()">
+            <i class="ri-close-line"></i>
+        </button>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- HERO SECTION -->
+        <section id="home" class="hero">
+            <div class="hero__content container">
+                <h1 class="hero__title">PIED RED & BLACK</h1>
+                <p class="hero__subtitle">O luxo urbano de Aracaju em cada passo</p>
+                <a href="#produtos" class="btn btn-primary">Explorar Coleção</a>
+            </div>
         </section>
 
+        <!-- PRODUCTS SECTION -->
         <section id="produtos" class="products-section">
-            <h2 class="section-title">Lançamentos</h2>
-            <div class="products-grid" id="product-list">
+            <div class="container">
+                <h2 class="section-title">Lançamentos</h2>
+                
+                <!-- FILTER OPTIONS -->
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="camisetas">Camisetas</button>
+                    <button class="filter-btn" data-filter="bones">Bonés</button>
+                    <button class="filter-btn" data-filter="acessorios">Acessórios</button>
                 </div>
+
+                <!-- PRODUCTS GRID -->
+                <div class="products-grid" id="product-list">
+                    <!-- Products will be dynamically loaded here -->
+                </div>
+
+                <!-- NO PRODUCTS MESSAGE -->
+                <div id="no-products" class="no-products" style="display: none;">
+                    <p>Nenhum produto encontrado</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="sobre" class="about-section">
+            <div class="container">
+                <h2 class="section-title">Sobre PIED</h2>
+                <div class="about__content">
+                    <div class="about__text">
+                        <p>Somos mais que uma marca, somos um movimento. PIED traz o luxo urbano para as ruas de Aracaju com peças autênticas e minimalistas.</p>
+                        <p>Cada produto é selecionado com cuidado para garantir qualidade premium e exclusividade.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contato" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Fale Conosco</h2>
+                <div class="contact__content">
+                    <a href="https://wa.me/5579999999999" class="btn btn-primary" target="_blank">
+                        <i class="ri-whatsapp-line"></i>
+                        WhatsApp
+                    </a>
+                    <a href="https://instagram.com" class="btn btn-secondary" target="_blank">
+                        <i class="ri-instagram-line"></i>
+                        Instagram
+                    </a>
+                </div>
+            </div>
         </section>
     </main>
 
+    <!-- CART MODAL -->
     <div id="cart-modal" class="cart-modal">
         <div class="cart-content">
             <div class="cart-header">
                 <h3>Seu Carrinho</h3>
-                <i class="ri-close-line" onclick="toggleCart()"></i>
+                <button class="cart-close" aria-label="Fechar carrinho" onclick="toggleCart()">
+                    <i class="ri-close-line"></i>
+                </button>
             </div>
-            <div id="cart-items" class="cart-items"></div>
+
+            <div id="cart-items" class="cart-items">
+                <!-- Cart items will be dynamically loaded here -->
+            </div>
+
+            <div id="empty-cart" class="empty-cart">
+                <p>Seu carrinho está vazio</p>
+            </div>
+
             <div class="cart-footer">
-                <div class="total">Total: <span id="cart-total">R$ 0,00</span></div>
-                <button class="btn-checkout" onclick="checkoutWhatsApp()">Finalizar no WhatsApp</button>
+                <div class="cart-summary">
+                    <div class="summary-line">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">R$ 0,00</span>
+                    </div>
+                    <div class="summary-line">
+                        <span>Frete:</span>
+                        <span id="shipping">R$ 0,00</span>
+                    </div>
+                    <div class="summary-line total">
+                        <span>Total:</span>
+                        <span id="cart-total">R$ 0,00</span>
+                    </div>
+                </div>
+                <button class="btn btn-checkout" onclick="checkoutWhatsApp()" id="checkout-btn" disabled>
+                    Finalizar no WhatsApp
+                </button>
             </div>
         </div>
     </div>
 
-    <div class="mobile-bar">
-        <a href="#"><i class="ri-home-line"></i><span>Início</span></a>
-        <a href="#produtos"><i class="ri-function-line"></i><span>Loja</span></a>
-        <a href="javascript:void(0)" onclick="toggleCart()"><i class="ri-shopping-bag-line"></i><span>Carrinho</span></a>
-        <a href="#"><i class="ri-user-line"></i><span>Conta</span></a>
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <nav class="mobile-bar">
+        <a href="#home" class="mobile-bar__item">
+            <i class="ri-home-line"></i>
+            <span>Início</span>
+        </a>
+        <a href="#produtos" class="mobile-bar__item">
+            <i class="ri-shopping-bag-line"></i>
+            <span>Loja</span>
+        </a>
+        <button onclick="toggleCart()" class="mobile-bar__item">
+            <i class="ri-shopping-cart-2-line"></i>
+            <span>Carrinho</span>
+        </button>
+        <a href="#contato" class="mobile-bar__item">
+            <i class="ri-phone-line"></i>
+            <span>Contato</span>
+        </a>
+    </nav>
+
+    <!-- PRODUCT MODAL (For detailed view) -->
+    <div id="product-modal" class="product-modal">
+        <div class="product-modal__content">
+            <button class="product-modal__close" onclick="closeProductModal()">
+                <i class="ri-close-line"></i>
+            </button>
+            <div id="modal-product" class="modal-product">
+                <!-- Product details will be loaded here -->
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
