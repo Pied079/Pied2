@@ -111,13 +111,14 @@ function removeFromCart(productId) {
 function updateQuantity(productId, quantity) {
     const item = cart.find(p => p.id === productId);
     if (item) {
-        item.quantity = Math.max(1, parseInt(quantity));
-        if (item.quantity <= 0) {
-            removeFromCart(productId);
-        } else {
-            saveCart();
-            renderCart();
-        }
+        let newQty = parseInt(quantity);
+        
+        // Se não for número ou for menor que 1, define como 1
+        if (isNaN(newQty) || newQty < 1) newQty = 1;
+        
+        item.quantity = newQty;
+        saveCart();
+        renderCart();
     }
 }
 
