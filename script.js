@@ -112,13 +112,17 @@ function updateQuantity(productId, quantity) {
     const item = cart.find(p => p.id === productId);
     if (item) {
         let newQty = parseInt(quantity);
-        
-        // Se não for número ou for menor que 1, define como 1
-        if (isNaN(newQty) || newQty < 1) newQty = 1;
-        
+
+        // Se o usuário tentar colocar 0 ou menos, removemos o item
+        if (newQty < 1) {
+            removeFromCart(productId);
+            return;
+        }
+
         item.quantity = newQty;
         saveCart();
         renderCart();
+        updateCartUI(); // Adicionado para atualizar o badge no ícone
     }
 }
 
