@@ -131,3 +131,76 @@ body {
     color: #444;
     font-size: 0.8rem;
 }
+
+/* --- CORREÇÕES DE FUNCIONALIDADE --- */
+
+/* Faz o modal aparecer quando o JS adiciona a classe 'active' */
+.cart-modal.active {
+    display: block !important;
+}
+
+/* Garante que o conteúdo do carrinho deslize da direita */
+.cart-modal.active .cart-content {
+    animation: slideRight 0.4s ease;
+}
+
+@keyframes slideRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+/* Estilização para a Notificação (que estava invisível) */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    background: var(--white);
+    color: var(--black);
+    font-weight: 700;
+    border-left: 5px solid var(--red);
+    z-index: 3000;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+}
+
+/* Estilização dos Inputs de Quantidade no Carrinho */
+.quantity-input {
+    width: 40px;
+    text-align: center;
+    background: #222;
+    border: 1px solid #444;
+    color: white;
+    margin: 0 5px;
+}
+
+/* Sincronizando o nome da classe do botão com o JS */
+.btn-add {
+    width: 100%;
+    background: var(--white);
+    color: var(--black);
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-add:hover {
+    background: var(--red);
+    color: var(--white);
+}
+
+/* Estilo para a Barra de Busca Ativa */
+.search-bar.active {
+    display: flex !important;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
